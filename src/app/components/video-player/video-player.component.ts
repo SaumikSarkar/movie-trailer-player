@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieTrailerService } from 'src/app/_services/movie-trailer.service';
 import * as models from '../../_models';
 import { DomSanitizer } from "@angular/platform-browser";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-video-player',
@@ -18,7 +19,8 @@ export class VideoPlayerComponent implements OnInit {
   //*************************** */
 
   constructor(public appService: MovieTrailerService,
-    private domSanitizer: DomSanitizer) { }
+    private domSanitizer: DomSanitizer,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.appService.getVideoData().subscribe(data => {
@@ -26,6 +28,8 @@ export class VideoPlayerComponent implements OnInit {
     },
     (error) => {
       console.log(error);
+      this.toastr.error('Process failed due to some error');
+      alert('Process failed due to some error');
     },
     () => {
       if (this.movieVideoData.length > 0) {
