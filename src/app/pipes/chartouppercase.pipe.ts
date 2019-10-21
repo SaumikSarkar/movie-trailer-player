@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ChartouppercasePipe implements PipeTransform {
 
-  transform(value: string, args: string[]): string {
+  transform(value: string): string {
     return value ? value.toUpperCase() : null;
   }
 
