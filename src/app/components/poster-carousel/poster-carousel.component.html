@@ -1,1 +1,8 @@
-<p>poster-carousel works!</p>
+<div class="carousel-section">
+    <figure class="poster"
+        *ngFor="let poster of posterData"
+        [style.width]="getPosterWidth() + '%'"
+        (click)="setTrailer(poster)">
+        <img [src]="poster.poster" />
+    </figure>
+</div>
